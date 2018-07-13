@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Validação Wemille</title>
+</head>
+<body style="background-color: orange; color: #000;">
+<center>
+<p>
+	<label style="font-size: 48px; font-family: monospace;" for="review">Título para Mercado Livre</label><br/>
+	<small class="caracteres"></small>
+</p>
+<textarea style="font-size: 18px; margin-top: 45px;" name="comentario" id="comentario" cols="50" rows="10" placeholder="Wemille, insira aqui o texto para o anúncio"></textarea>
+
+<br/><br/>
+<a type="button" href="https://github.com/leogif">Desenvolvido por Leonardo Alcântara</a>
+<script src="jquery.min.js"></script>
+<center>
+
+
+
+<script>
+	$(document).on("input", "#comentario", function() {
+        var limite = 60;
+        var informativo = "caracteres restantes.";
+        var caracteresDigitados = $(this).val().length;
+        var caracteresRestantes = limite - caracteresDigitados;
+
+        if (caracteresRestantes <= 0) {
+            var comentario = $("textarea[name=comentario]").val();
+            $("textarea[name=comentario]").val(comentario.substr(0, limite));
+            $(".caracteres").text("0 " + informativo);
+        } else {
+            $(".caracteres").text(caracteresRestantes + " " + informativo);
+        }
+    });
+</script>
+</body>
+</html>
